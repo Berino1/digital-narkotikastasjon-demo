@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Digital Narkotikastasjon – 100 lommer</title>
+<style>
+:root{--navy:#15324f;--blue:#2468a8;--pale:#edf4fb;--bg:#f4f7fb;--line:#dbe4ed;--text:#243244;--muted:#66768a;--green:#16734a;--amber:#9a5b00;--red:#b42318}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,"Segoe UI",Arial,sans-serif}
+header{background:var(--navy);color:white;padding:17px 23px;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.brand{display:flex;gap:12px;align-items:center}.logo{width:44px;height:44px;border-radius:12px;background:white;color:var(--navy);display:grid;place-items:center;font-weight:850}.brand h1{font-size:20px;margin:0}.brand p{font-size:12px;margin:4px 0 0;color:#d8e5f2}.tag{border:1px solid #9ab3cd;border-radius:99px;padding:8px 11px;font-size:11px;font-weight:800;letter-spacing:.06em}
+.layout{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 78px)}aside{background:white;border-right:1px solid var(--line);padding:15px 12px}nav button{width:100%;text-align:left;background:transparent;border:0;border-radius:9px;padding:12px;font-size:14px;color:#34465a;cursor:pointer;margin:3px 0}nav button.active,nav button:hover{background:var(--pale);color:var(--blue);font-weight:750}
+main{padding:23px;max-width:1500px;width:100%;margin:auto}.heading{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:18px}h2{font-size:25px;color:var(--navy);margin:0 0 5px}.sub{font-size:14px;color:var(--muted);margin:0}
+.banner{padding:12px 14px;border-radius:10px;background:#fff5dd;border:1px solid #f0d59c;color:#744800;font-size:13px;line-height:1.5;margin-bottom:17px}.panel,.metric{background:white;border:1px solid var(--line);border-radius:13px;padding:17px;box-shadow:0 2px 6px #102a4306;margin-bottom:16px}.panel h3{margin:0 0 13px;font-size:16px;color:var(--navy)}
+.grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:16px}.metric .label{font-size:12px;color:var(--muted)}.metric .num{font-size:27px;font-weight:800;color:var(--navy);margin:7px 0}.metric .hint{font-size:11px;color:var(--muted)}
+.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 14px}.full{grid-column:1/-1}label{display:block;font-size:13px;font-weight:700;color:#35465a;margin:12px 0 6px}input,select,textarea{font:inherit;font-size:14px;width:100%;padding:10px 11px;border:1px solid #cbd5e1;border-radius:8px;background:white;color:var(--text)}button.primary{background:var(--blue);border:1px solid var(--blue);color:white;border-radius:8px;padding:10px 14px;font-weight:750;cursor:pointer}button.secondary{background:white;border:1px solid #cbd5e1;color:#34465a;border-radius:8px;padding:9px 12px;cursor:pointer}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.help{font-size:12px;color:var(--muted);line-height:1.5;margin:9px 0 13px}
+.pill{display:inline-block;padding:4px 8px;border-radius:99px;font-size:11px;font-weight:750;white-space:nowrap}.a{background:#e8efff;color:#274f9b}.b{background:#e5f6ee;color:#176744}.empty{background:#eef1f5;color:#536274}.assigned{background:#fff0cf;color:#8a5200}
+.slots{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:8px}.slot{border:1px solid #d4dee8;background:#fff;border-radius:9px;min-height:91px;padding:8px;cursor:pointer;text-align:left;transition:.12s}.slot:hover{border-color:var(--blue);box-shadow:0 2px 8px #2468a81c}.slot strong{display:block;color:var(--navy);font-size:13px;margin-bottom:7px}.slot .slotlabel{font-size:11px;color:#536274;display:block;overflow-wrap:anywhere;margin-top:6px}.slot.isA{border-top:4px solid #5079d8}.slot.isB{border-top:4px solid #23946b}.slot.isAssigned{background:#fffaf0}
+.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:10px 9px;text-align:left;border-bottom:1px solid #edf1f5;vertical-align:top}th{background:#f8fafc;color:#526176;font-weight:700}tr:last-child td{border-bottom:0}
+.feedback{display:none;padding:11px 12px;border-radius:8px;margin-top:12px;font-size:13px;line-height:1.45}.feedback.success{display:block;background:#e8f6ee;color:#17613f}.feedback.error{display:block;background:#fdecea;color:#922018}.feedback.info{display:block;background:#eef5fc;color:#31577b}
+.hidden{display:none!important}.login-wrap{max-width:460px;margin:35px auto}.login-icon{width:52px;height:52px;border-radius:15px;background:var(--pale);color:var(--blue);display:grid;place-items:center;font-weight:850;font-size:20px;margin-bottom:14px}.foot{text-align:center;color:#8190a2;font-size:11px;padding:12px}
+@media(max-width:1000px){.slots{grid-template-columns:repeat(5,minmax(0,1fr))}.layout{grid-template-columns:1fr}aside{border-right:0;border-bottom:1px solid var(--line);padding:7px}nav{display:flex;overflow:auto}nav button{width:auto;white-space:nowrap}}
+@media(max-width:600px){main{padding:12px}.grid4{grid-template-columns:repeat(2,minmax(0,1fr))}.formgrid{grid-template-columns:1fr}.full{grid-column:auto}.slots{grid-template-columns:repeat(3,minmax(0,1fr))}.slot{min-height:82px}.brand h1{font-size:17px}}
+</style></head>
+<body>
+<header><div class="brand"><div class="logo">DN</div><div><h1>Digital Narkotikastasjon</h1><p>100 lommer · A- og B-preparater · konseptdemo</p></div></div><div class="tag">DEMO · FIKTIVE DATA</div></header>
+<div id="loginScreen" class="login-wrap panel">
+ <div class="login-icon">DN</div><h2 style="font-size:23px">Logg inn</h2><p class="sub">Testinnlogging for å prøve arbeidsflyten.</p>
+ <div class="banner" style="margin-top:16px">Dette er en demonstrasjon. Innloggingen er ikke sikker autentisering og gir ikke tilgang til et reelt legemiddelsystem.</div>
+ <form id="loginForm"><label for="loginName">Brukernavn</label><input id="loginName" required placeholder="F.eks. demo.sykepleier" autocomplete="username"><label for="loginPin">Demokode</label><input id="loginPin" required type="password" placeholder="Skriv valgfri testkode" autocomplete="current-password"><button class="primary" type="submit" style="width:100%;margin-top:16px">Logg inn i demo</button><p class="help">Du kan bruke et oppdiktet brukernavn og valgfri kode. Ikke skriv ditt ekte passord.</p></form><div id="loginMsg" class="feedback"></div>
+</div>
+<div id="app" class="layout hidden">
+<aside><nav>
+<button class="active" data-page="oversikt">▦ &nbsp; Oversikt</button>
+<button data-page="lommer">▤ &nbsp; 100 lommer</button>
+<button data-page="registrering">＋ &nbsp; Registrer handling</button>
+<button data-page="logg">☷ &nbsp; Hendelseslogg</button>
+</nav></aside>
+<main>
+<section id="page-oversikt" class="page">
+ <div class="heading"><div><h2>Avdelingsoversikt</h2><p class="sub">Oversikt over lommer, preparattyper og testregistreringer.</p></div><div class="actions"><span id="signedUser" class="pill a">Innlogget demo-bruker</span><button class="secondary" onclick="logout()">Logg ut</button></div></div>
+ <div class="banner"><strong>Viktig:</strong> Alle navn, pasient-ID-er, preparater og beholdninger skal være fiktive. Ikke bruk personopplysninger eller faktiske opplysninger om A- og B-preparater i denne demoen. Dette er ikke et godkjent system.</div>
+ <div class="grid4">
+  <div class="metric"><div class="label">Lommer totalt</div><div class="num">100</div><div class="hint">Nummerert 001–100</div></div>
+  <div class="metric"><div class="label">Lommer i bruk</div><div class="num" id="usedCount">0</div><div class="hint">Har testinformasjon</div></div>
+  <div class="metric"><div class="label">A-preparat</div><div class="num" id="aCount">0</div><div class="hint">Testregistreringer</div></div>
+  <div class="metric"><div class="label">B-preparat</div><div class="num" id="bCount">0</div><div class="hint">Testregistreringer</div></div>
+ </div>
+ <div class="panel"><h3>Rask oversikt over lommer</h3><p class="help">Velg en lomme for å se eller redigere fiktive testdata. En lomme er bare en digital illustrasjon – ikke en fysisk lås.</p><div id="miniSlots" class="slots"></div><div class="actions"><button class="primary" onclick="showPage('lommer')">Åpne alle 100 lommer</button><button class="secondary" onclick="showPage('registrering')">Registrer uttak / påfyll</button></div></div>
+</section>
+
+<section id="page-lommer" class="page hidden">
+ <div class="heading"><div><h2>100 lommer</h2><p class="sub">Velg en nummerert lomme for å registrere testinformasjon.</p></div></div>
+ <div class="banner">Pasientnavn og pasient-ID i denne demoen skal bare være oppdiktede. I et ekte system må tilgang, personvern, rollebasert kontroll og kobling til pasientadministrasjon utredes før bruk.</div>
+ <div class="panel"><div class="formgrid"><div><label for="slotSearch">Søk etter lomme, test-ID eller testnavn</label><input id="slotSearch" placeholder="F.eks. 014 eller TEST-1002"></div><div><label for="slotFilter">Filter</label><select id="slotFilter"><option value="all">Alle lommer</option><option value="empty">Ledige lommer</option><option value="A">A-preparat</option><option value="B">B-preparat</option><option value="assigned">Lommer med testinformasjon</option></select></div></div><p class="help">Klikk på en lomme for å åpne detaljene.</p><div id="allSlots" class="slots"></div></div>
+</section>
+
+<section id="page-registrering" class="page hidden">
+ <div class="heading"><div><h2>Registrer handling</h2><p class="sub">Koble en testregistrering til en lomme og loggfør handlingen.</p></div></div>
+ <div class="banner">Kun fiktive testdata. Registrering av pasient, preparattype og uttak her utfører ingen faktisk utlevering og erstatter ikke gjeldende rutiner.</div>
+ <div class="panel"><h3>Pasient-/testreferanse og lomme</h3><form id="slotForm"><div class="formgrid">
+ <div><label for="slotNo">Lommenummer</label><select id="slotNo"></select></div>
+ <div><label for="patientId">Pasient-ID / test-ID</label><input id="patientId" required maxlength="40" placeholder="F.eks. TEST-1002"></div>
+ <div><label for="patientName">Navn / testnavn</label><input id="patientName" required maxlength="60" placeholder="F.eks. Testpasient Alfa"></div>
+ <div><label for="prepType">Preparattype</label><select id="prepType" required><option value="">Velg type</option><option value="A">A-preparat (test)</option><option value="B">B-preparat (test)</option></select></div>
+ <div><label for="prepLabel">Testpreparat / beskrivelse</label><input id="prepLabel" required maxlength="60" placeholder="F.eks. Testpreparat A-01"></div>
+ <div><label for="qty">Testbeholdning (enheter)</label><input id="qty" type="number" min="0" max="9999" value="0" required></div>
+ <div><label for="actionType">Handling</label><select id="actionType"><option value="Tildeling">Tildel / oppdater lomme</option><option value="Uttak">Testuttak</option><option value="Påfyll">Testpåfyll</option><option value="Retur">Testretur</option></select></div>
+ <div><label for="checker">Kontrollør (fiktiv bruker)</label><select id="checker"><option value="">Velg kontrollør</option><option>Sykepleier A</option><option>Sykepleier B</option><option>Helsefagarbeider C</option><option>Sykepleier D</option></select></div>
+ <div class="full"><label for="comment">Kommentar (valgfritt)</label><textarea id="comment" rows="2" maxlength="200" placeholder="Bare kommentar til testscenarioet. Ikke skriv reelle pasientopplysninger."></textarea></div>
+ </div><div class="notice">Innlogget bruker registreres automatisk som utførende. For uttak, påfyll og retur krever demoen at du velger en annen kontrollør enn den innloggede brukeren.</div>
+ <div class="actions"><button class="primary" type="submit">Lagre testregistrering</button><button class="secondary" type="button" onclick="clearSlotForm()">Tøm skjema</button></div><div id="slotMsg" class="feedback"></div></form></div>
+</section>
+
+<section id="page-logg" class="page hidden">
+ <div class="heading"><div><h2>Hendelseslogg</h2><p class="sub">Tidspunkt, bruker, lomme, test-ID, preparattype og handling.</p></div><div class="actions"><button class="secondary" onclick="exportLog()">Eksporter CSV</button><button class="secondary" onclick="logout()">Logg ut</button></div></div>
+ <div class="banner">Denne loggen lagres bare i minnet mens demoen er åpen. Den er ikke en sikker eller uforanderlig revisjonslogg. Oppdater siden for å nullstille demoen.</div>
+ <div class="panel"><div class="tablewrap"><table><thead><tr><th>Tidspunkt</th><th>Handling</th><th>Lomme</th><th>Test-ID / navn</th><th>Type</th><th>Antall</th><th>Utført av</th><th>Kontrollør</th></tr></thead><tbody id="logRows"></tbody></table></div><p id="emptyLog" class="help">Ingen hendelser ennå.</p></div>
+</section>
+<div class="foot">Digital Narkotikastasjon · 100-lommers konseptdemo · fiktive testdata · ikke klinisk godkjent</div>
+</main></div>
+
+<div id="slotModal" class="hidden" style="position:fixed;inset:0;background:#0b2038a8;z-index:20;padding:16px;overflow:auto">
+ <div class="panel" style="max-width:520px;margin:6vh auto">
+ <div class="heading"><div><h2 id="modalTitle" style="font-size:21px">Lomme</h2><p class="sub">Detaljer fra fiktiv testregistrering</p></div><button class="secondary" onclick="closeModal()">Lukk</button></div>
+ <div id="modalDetails"></div><div class="actions"><button class="primary" onclick="editSlot()">Rediger denne lommen</button></div>
+ </div>
+</div>
+<script>
+const slots=Array.from({length:100},(_,i)=>({no:i+1,patientId:'',patientName:'',prepType:'',prepLabel:'',qty:0}));
+let currentUser='';
+let events=[];
+let activeSlot=1;
+function slotNo(n){return String(n).padStart(3,'0')}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function showPage(p){document.querySelectorAll('.page').forEach(x=>x.classList.add('hidden'));document.getElementById('page-'+p).classList.remove('hidden');document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===p));render()}
+document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+document.getElementById('loginForm').addEventListener('submit',e=>{e.preventDefault();currentUser=document.getElementById('loginName').value.trim();if(!currentUser){feedback('loginMsg','Skriv et demobrukernavn.','error');return}document.getElementById('loginScreen').classList.add('hidden');document.getElementById('app').classList.remove('hidden');document.getElementById('signedUser').textContent='Innlogget: '+currentUser;render()});
+function logout(){currentUser='';document.getElementById('app').classList.add('hidden');document.getElementById('loginScreen').classList.remove('hidden');document.getElementById('loginPin').value='';document.getElementById('loginMsg').className='feedback'}
+function feedback(id,msg,type='success'){const el=document.getElementById(id);el.className='feedback '+type;el.textContent=msg}
+function render(){
+ const used=slots.filter(s=>s.patientId||s.patientName||s.prepType).length;
+ document.getElementById('usedCount').textContent=used;
+ document.getElementById('aCount').textContent=slots.filter(s=>s.prepType==='A').length;
+ document.getElementById('bCount').textContent=slots.filter(s=>s.prepType==='B').length;
+ const search=(document.getElementById('slotSearch')?.value||'').trim().toLowerCase();
+ const filter=document.getElementById('slotFilter')?.value||'all';
+ const html=slots.filter(s=>{
+  const assigned=!!(s.patientId||s.patientName||s.prepType);
+  const matches= !search || slotNo(s.no).includes(search)||s.patientId.toLowerCase().includes(search)||s.patientName.toLowerCase().includes(search)||s.prepLabel.toLowerCase().includes(search);
+  const typeMatch=filter==='all'||(filter==='empty'&&!assigned)||(filter==='assigned'&&assigned)||(filter==='A'&&s.prepType==='A')||(filter==='B'&&s.prepType==='B');
+  return matches&&typeMatch;
+ }).map(s=>{
+  const assigned=!!(s.patientId||s.patientName||s.prepType);
+  const typeClass=s.prepType==='A'?'isA':s.prepType==='B'?'isB':'';
+  const pill=s.prepType?`<span class="pill ${s.prepType==='A'?'a':'b'}">Type ${s.prepType}</span>`:'<span class="pill empty">Ledig</span>';
+  return `<button class="slot ${typeClass} ${assigned?'isAssigned':''}" onclick="openSlot(${s.no})"><strong>Lomme ${slotNo(s.no)}</strong>${pill}<span class="slotlabel">${assigned?esc(s.patientId||s.patientName||'Testreferanse'):'Ingen testdata'}${assigned?'<br>'+esc(s.prepLabel):''}</span></button>`;
+ }).join('');
+ document.getElementById('allSlots').innerHTML=html;
+ document.getElementById('miniSlots').innerHTML=slots.slice(0,20).map(s=>`<button class="slot ${s.prepType==='A'?'isA':s.prepType==='B'?'isB':''}" onclick="openSlot(${s.no})"><strong>${slotNo(s.no)}</strong><span class="slotlabel">${s.prepType?'Type '+s.prepType:'Ledig'}</span></button>`).join('')+'<div class="help" style="grid-column:1/-1">Viser lomme 001–020 her. Velg «Åpne alle 100 lommer» for hele stasjonen.</div>';
+ document.getElementById('logRows').innerHTML=events.map(e=>`<tr><td>${esc(e.time)}</td><td>${esc(e.action)}</td><td>${slotNo(e.no)}</td><td>${esc(e.patientId)}<br>${esc(e.patientName)}</td><td><span class="pill ${e.type==='A'?'a':'b'}">${esc(e.type||'–')}</span></td><td>${esc(e.qty)}</td><td>${esc(e.user)}</td><td>${esc(e.checker||'–')}</td></tr>`).join('');
+ document.getElementById('emptyLog').style.display=events.length?'none':'block';
+ const sel=document.getElementById('slotNo');if(sel){const old=sel.value;sel.innerHTML=slots.map(s=>`<option value="${s.no}">Lomme ${slotNo(s.no)}${(s.patientId||s.prepType)?' · i bruk':''}</option>`).join('');if(old)sel.value=old}
+}
+document.getElementById('slotSearch').addEventListener('input',render);
+document.getElementById('slotFilter').addEventListener('change',render);
+function openSlot(n){activeSlot=n;const s=slots[n-1];document.getElementById('modalTitle').textContent='Lomme '+slotNo(n);document.getElementById('modalDetails').innerHTML=s.patientId?`<p><strong>Test-ID:</strong> ${esc(s.patientId)}</p><p><strong>Testnavn:</strong> ${esc(s.patientName)}</p><p><strong>Preparattype:</strong> Type ${esc(s.prepType)}</p><p><strong>Testpreparat:</strong> ${esc(s.prepLabel)}</p><p><strong>Testbeholdning:</strong> ${s.qty}</p>`:'<p>Denne lommen har ingen testinformasjon ennå.</p>';document.getElementById('slotModal').classList.remove('hidden')}
+function closeModal(){document.getElementById('slotModal').classList.add('hidden')}
+function editSlot(){const s=slots[activeSlot-1];closeModal();showPage('registrering');document.getElementById('slotNo').value=activeSlot;document.getElementById('patientId').value=s.patientId;document.getElementById('patientName').value=s.patientName;document.getElementById('prepType').value=s.prepType;document.getElementById('prepLabel').value=s.prepLabel;document.getElementById('qty').value=s.qty}
+function clearSlotForm(){document.getElementById('slotForm').reset();document.getElementById('qty').value=0;document.getElementById('slotMsg').className='feedback'}
+document.getElementById('slotForm').addEventListener('submit',e=>{
+ e.preventDefault();
+ const n=Number(document.getElementById('slotNo').value),s=slots[n-1];
+ const id=document.getElementById('patientId').value.trim(),name=document.getElementById('patientName').value.trim(),type=document.getElementById('prepType').value,label=document.getElementById('prepLabel').value.trim(),qty=Number(document.getElementById('qty').value),action=document.getElementById('actionType').value,checker=document.getElementById('checker').value,comment=document.getElementById('comment').value.trim();
+ if(!id||!name||!type||!label||!Number.isInteger(qty)||qty<0){feedback('slotMsg','Fyll ut test-ID, testnavn, preparattype, beskrivelse og et gyldig antall.','error');return}
+ if(action!=='Tildeling'&&(!checker||checker===currentUser)){feedback('slotMsg','For uttak, påfyll og retur må du velge en annen fiktiv bruker som kontrollør.','error');return}
+ if(action==='Uttak'&&qty>s.qty){feedback('slotMsg',`Testuttaket ble ikke registrert. Lommen viser ${s.qty} enheter i testbeholdningen. Oppgi et antall som ikke overstiger beholdningen.`,'error');return}
+ const oldQty=s.qty;
+ if(action==='Uttak')s.qty-=qty;else if(action==='Påfyll'||action==='Retur')s.qty+=qty;else s.qty=qty;
+ s.patientId=id;s.patientName=name;s.prepType=type;s.prepLabel=label;
+ events.unshift({time:new Date().toLocaleString('no-NO'),action,no:n,patientId:id,patientName:name,type,qty:action==='Uttak'?'-'+qty:action==='Påfyll'||action==='Retur'?'+'+qty:s.qty,user:currentUser,checker:checker||'Ikke relevant for tildeling',comment});
+ feedback('slotMsg',`Lagret i demoen: lomme ${slotNo(n)}, type ${type}. Handling: ${action}. Beholdning i testdata: ${oldQty} → ${s.qty}. Registrert av ${currentUser}. Kontrollør: ${checker||'ikke valgt for tildeling'}.`,'success');
+ render();
+});
+function exportLog(){if(!events.length){alert('Ingen hendelser å eksportere ennå.');return}const rows=[['Tidspunkt','Handling','Lomme','Test-ID','Testnavn','Type','Antall','Utført av','Kontrollør','Kommentar'],...events.map(e=>[e.time,e.action,slotNo(e.no),e.patientId,e.patientName,e.type,e.qty,e.user,e.checker,e.comment||''])];const csv=rows.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(';')).join('\r\n');const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='digital-narkotikastasjon-demo-logg.csv';a.click();URL.revokeObjectURL(url)}
+render();
+</script></body></html>
